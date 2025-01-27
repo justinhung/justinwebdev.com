@@ -1,6 +1,7 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { motion } from "framer-motion";
+import { Typography } from '@mui/material';
 
 function App() {
   const [show, setShow] = useState(true)
@@ -30,13 +31,13 @@ function App() {
           }}
           exit={{ scale: 0 }}
         >
-          <h1 onClick={handleToggle}>
+          <Typography variant="h1" onClick={handleToggle}>
             Justin Hung
-          </h1>
+          </Typography>
         </motion.div>)
         }
         {!showH2 && (
-          <div style={{ height: '36px', marginTop: '0.83rem' }}></div>
+          <div style={{ height: '72px', marginTop: '20px', marginBottom: '20px' }}></div>
         )}
         {showH2 && (
           <motion.div
@@ -47,7 +48,7 @@ function App() {
             }}
             exit={{ scale: 0 }}
           >
-            <h2>Full Stack Developer</h2>
+            <Typography variant="h2" style={{ margin: '20px' }}>Fullstack Developer</Typography>
           </motion.div>)
         }
       </div>
