@@ -1,11 +1,13 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { motion } from "framer-motion";
-import { Typography } from '@mui/material';
+import { IconButton, Slide, Typography } from '@mui/material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 function App() {
   const [show, setShow] = useState(true)
   const [showH2, setShowH2] = useState(false)
+  const [showH3, setShowH3] = useState(false)
 
   const handleToggle = () => {
     setShow(false);
@@ -18,11 +20,14 @@ function App() {
     setTimeout(() => {
       setShowH2(true);
     }, 1000);
+    setTimeout(() => {
+      setShowH3(true);
+    }, 2000);
   }, []);
 
   return (
     <>
-      <div>
+      <div style={{ height: '100vh', alignContent: 'center' }}>
         {show && (<motion.div
           initial={{ scale: 0 }}
           animate={{
@@ -51,6 +56,12 @@ function App() {
             <Typography variant="h2" style={{ margin: '20px' }}>Fullstack Developer</Typography>
           </motion.div>)
         }
+
+          <Slide direction="up" in={showH3} mountOnEnter unmountOnExit>
+          <IconButton>
+            <KeyboardArrowDownIcon style={{ color: 'white' }} />
+          </IconButton>
+          </Slide>
       </div>
     </>
   )
