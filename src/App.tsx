@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <div style={{ height: '100vh', alignContent: 'center' }}>
+      <div className="h-screen w-full flex flex-col justify-center items-center">
         {show && (<motion.div
           initial={{ scale: 0 }}
           animate={{
@@ -57,11 +57,11 @@ function App() {
           </motion.div>)
         }
 
-          <Slide direction="up" in={showH3} mountOnEnter unmountOnExit>
+        <Slide direction="up" in={showH3} mountOnEnter unmountOnExit timeout={1000} >
           <IconButton>
-            <KeyboardArrowDownIcon style={{ color: 'white' }} />
+            <KeyboardArrowDownIcon className='text-white' />
           </IconButton>
-          </Slide>
+        </Slide>
       </div>
     </>
   )
