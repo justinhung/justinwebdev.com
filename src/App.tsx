@@ -1,7 +1,7 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { motion } from "framer-motion";
-import { IconButton, Slide, Typography } from '@mui/material';
+import { Fade, IconButton, Slide, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 function App() {
@@ -35,6 +35,7 @@ function App() {
             transition: { type: "spring", stiffness: 100, bounce: 1, damping: 10 },
           }}
           exit={{ scale: 0 }}
+          className='mt-auto'
         >
           <Typography variant="h1" onClick={handleToggle}>
             Justin Hung
@@ -57,11 +58,23 @@ function App() {
           </motion.div>)
         }
 
-        <Slide direction="up" in={showH3} mountOnEnter unmountOnExit timeout={1000} >
-          <IconButton>
-            <KeyboardArrowDownIcon className='text-white' />
-          </IconButton>
-        </Slide>
+        {!showH3 && (
+          <div className='mt-auto' style={{ height: '40px' }}></div>
+        )}
+        {showH3 && (
+          <Fade in={showH3} timeout={1000}>
+            <div className='mt-auto mb-1'>
+              <Slide direction="down" in={showH3} mountOnEnter unmountOnExit timeout={1500} >
+                <div>
+                  <IconButton className='animate-bounce'>
+                    <KeyboardArrowDownIcon className='text-white' />
+                  </IconButton>
+                </div>
+              </Slide>
+            </div>
+            
+          </Fade>
+        )}
       </div>
     </>
   )
