@@ -48,7 +48,7 @@ export default function App() {
   return (
     <>
       <div className="h-screen w-full flex flex-col justify-center items-center">
-        <div className='my-auto'>
+        <div className='title my-auto'>
           {show && (<motion.div
             initial={{ scale: 0 }}
             animate={{
@@ -94,6 +94,18 @@ export default function App() {
             </div>
           </Fade>
         )}
+      </div>
+
+      <div className="h-screen w-full flex flex-col justify-center items-center">
+        <div className='animation-test'>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <Typography variant="h3" className='text-blue-300 p-6'>
+            This is a test
+          </Typography>
+        </div>
       </div>
     </>
   )
