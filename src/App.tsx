@@ -96,15 +96,17 @@ export default function App() {
         )}
       </div>
 
-      <div className="h-screen w-full flex flex-col justify-center items-center">
-        <div className='animation-test'>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <Typography variant="h3" className='text-blue-300 p-6'>
-            This is a test
-          </Typography>
+      <div className="h-screen w-full p-5">
+        <div className='grid grid-cols-3 gap-4'>
+          <div className='animation-test'>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <Typography variant="h3" className='text-blue-300 p-3'>
+              This is a test
+            </Typography>
+          </div>
         </div>
       </div>
     </>
