@@ -23,7 +23,7 @@ export default function App() {
       const scrollPosition = window.scrollY;
       const top = 0;
       const maxScrollPosition = window.innerHeight / 2;
-      const textOpacityValue =     1 - scrollPosition / maxScrollPosition;
+      const textOpacityValue = 1 - scrollPosition / maxScrollPosition;
       setTextOpacity(textOpacityValue);
 
       const arrowOpacityValue = scrollPosition === top ? 1 : 0;
