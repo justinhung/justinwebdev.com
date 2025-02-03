@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Box, Fade, IconButton, Slide, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import WebGL from "./components/WebGL";
 
 export default function App() {
   const [show, setShow] = useState(true);
@@ -101,8 +102,8 @@ export default function App() {
       </div>
 
       <div className="h-screen w-full p-5">
-        <div className="grid grid-cols-3 gap-4">
-          <div className="animation-test">
+        <div className="grid grid-cols-3 md:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1 gap-4">
+          <div className="animation-test content-center">
             <span></span>
             <span></span>
             <span></span>
@@ -110,6 +111,10 @@ export default function App() {
             <Typography variant="h3" className="text-blue-300 p-3">
               This is a test
             </Typography>
+          </div>
+
+          <div>
+            <WebGL />
           </div>
         </div>
       </div>
