@@ -102,7 +102,7 @@ export default function App() {
       </div>
 
       <div className="h-screen w-full p-5">
-        <div className="grid grid-cols-3 md:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="animation-test content-center">
             <span></span>
             <span></span>
@@ -113,7 +113,11 @@ export default function App() {
             </Typography>
           </div>
 
-          <div>
+          <div className="animation-test" style={{transform: 'scale(-1, 1)'}}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
             <WebGL />
           </div>
         </div>
