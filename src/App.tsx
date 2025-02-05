@@ -101,7 +101,7 @@ export default function App() {
         )}
       </div>
 
-      <div className="h-screen w-full p-5">
+      <div className="h-screen w-full max-w-7xl mx-auto p-5 content-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="animation-test content-center">
             <span></span>
@@ -113,7 +113,7 @@ export default function App() {
             </Typography>
           </div>
 
-          <div className="animation-test" style={{transform: 'scale(-1, 1)'}}>
+          <div className="animation-test" style={{ transform: "scale(-1, 1)" }}>
             <span></span>
             <span></span>
             <span></span>
