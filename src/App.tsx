@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Box, Fade, IconButton, Slide, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import WebGL from "./components/WebGL";
+import fluidCursor from "./components/useFluidCursor";
 
 export default function App() {
   const [show, setShow] = useState(true);
@@ -20,6 +21,8 @@ export default function App() {
   };
 
   useEffect(() => {
+    fluidCursor();
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const top = 0;
@@ -46,7 +49,11 @@ export default function App() {
 
   return (
     <>
-      <div className="h-screen w-full flex flex-col justify-center items-center">
+      <div className="fixed top-0 left-0 z-0">
+        <canvas id="fluid" className="w-screen h-screen"></canvas>
+      </div>
+
+      <div className="h-screen w-full flex flex-col justify-center items-center z-1 relative">
         <div className="title my-auto">
           {show && (
             <motion.div
@@ -101,7 +108,7 @@ export default function App() {
         )}
       </div>
 
-      <div className="h-screen w-full max-w-7xl mx-auto p-5 content-center">
+      <div className="h-screen w-full max-w-7xl mx-auto p-5 content-center z-1 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="animation-test content-center">
             <span></span>
