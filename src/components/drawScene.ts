@@ -1,7 +1,8 @@
 import { mat4 } from "gl-matrix";
 
-export function drawScene(gl, programInfo, buffers) {
-  gl.clearColor(0.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function drawScene(gl: WebGLRenderingContext, programInfo: any, buffers: any, squareRotation: number) {
+  gl.clearColor(0.0, 0.0, 0.0, 0.0); // Clear to black, fully opaque
   gl.clearDepth(1.0); // Clear everything
   gl.enable(gl.DEPTH_TEST); // Enable depth testing
   gl.depthFunc(gl.LEQUAL); // Near things obscure far things
@@ -18,7 +19,8 @@ export function drawScene(gl, programInfo, buffers) {
   // and 100 units away from the camera.
 
   const fieldOfView = (45 * Math.PI) / 180; // in radians
-  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;
+  const { clientWidth, clientHeight } = gl.canvas as HTMLCanvasElement ;
+  const aspect = clientWidth / clientHeight;
   const zNear = 0.1;
   const zFar = 100.0;
   const projectionMatrix = mat4.create();
@@ -39,9 +41,19 @@ export function drawScene(gl, programInfo, buffers) {
     [-0.0, 0.0, -6.0]
   ); // amount to translate
 
+  mat4.rotate(
+    modelViewMatrix, // destination matrix
+    modelViewMatrix, // matrix to rotate
+    squareRotation, // amount to rotate in radians
+    [0, 0, 1],
+  ); // axis to rotate around
+  
+
   // Tell WebGL how to pull out the positions from the position
   // buffer into the vertexPosition attribute.
   setPositionAttribute(gl, buffers, programInfo);
+
+  setColorAttribute(gl, buffers, programInfo);
 
   // Tell WebGL to use our program when drawing
   gl.useProgram(programInfo.program);
@@ -59,7 +71,8 @@ export function drawScene(gl, programInfo, buffers) {
 
 // Tell WebGL how to pull out the positions from the position
 // buffer into the vertexPosition attribute.
-function setPositionAttribute(gl, buffers, programInfo) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function setPositionAttribute(gl: WebGLRenderingContext, buffers: any, programInfo: any) {
   const numComponents = 2; // pull out 2 values per iteration
   const type = gl.FLOAT; // the data in the buffer is 32bit floats
   const normalize = false; // don't normalize
@@ -76,4 +89,25 @@ function setPositionAttribute(gl, buffers, programInfo) {
     offset
   );
   gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
+}
+
+// Tell WebGL how to pull out the colors from the color buffer
+// into the vertexColor attribute.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function setColorAttribute(gl: WebGLRenderingContext, buffers: any, programInfo: any) {
+  const numComponents = 4;
+  const type = gl.FLOAT;
+  const normalize = false;
+  const stride = 0;
+  const offset = 0;
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffers.color);
+  gl.vertexAttribPointer(
+    programInfo.attribLocations.vertexColor,
+    numComponents,
+    type,
+    normalize,
+    stride,
+    offset,
+  );
+  gl.enableVertexAttribArray(programInfo.attribLocations.vertexColor);
 }
