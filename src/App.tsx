@@ -7,18 +7,10 @@ import WebGL from "./components/WebGL";
 import fluidCursor from "./components/useFluidCursor";
 
 export default function App() {
-  const [show, setShow] = useState(true);
   const [showH2, setShowH2] = useState(false);
   const [showArrow, setShowArrow] = useState(false);
   const [arrowOpacity, setOpacity] = useState(1);
   const [textOpacity, setTextOpacity] = useState(1);
-
-  const handleToggle = () => {
-    setShow(false);
-    setTimeout(() => {
-      setShow(true);
-    }, 100);
-  };
 
   useEffect(() => {
     fluidCursor();
@@ -55,23 +47,20 @@ export default function App() {
 
       <div className="h-screen w-full flex flex-col justify-center items-center z-1 relative">
         <div className="title my-auto">
-          {show && (
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{
-                scale: [0, 1.1, 0.9, 1],
-                transition: { type: "spring", stiffness: 100, bounce: 1, damping: 10 },
-              }}
-              exit={{ scale: 0 }}>
-              <Typography
-                variant="h1"
-                onClick={handleToggle}
-                className="text-blue-300 transition duration-300 ease-in-out"
-                style={{ opacity: textOpacity }}>
-                Justin Hung
-              </Typography>
-            </motion.div>
-          )}
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{
+              scale: [0, 1.1, 0.9, 1],
+              transition: { type: "spring", stiffness: 100, bounce: 1, damping: 10 },
+            }}
+            exit={{ scale: 0 }}>
+            <Typography
+              variant="h1"
+              className="text-blue-300 transition duration-300 ease-in-out"
+              style={{ opacity: textOpacity }}>
+              Justin Hung
+            </Typography>
+          </motion.div>
           {!showH2 && (
             <Box style={{ height: "72px", marginTop: "20px", marginBottom: "20px" }}></Box>
           )}
