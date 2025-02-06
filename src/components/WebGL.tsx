@@ -4,36 +4,6 @@ import { useEffect } from "react";
 
 export default function WebGL() {
   //
-  // Initialize a shader program, so WebGL knows how to draw our data
-  //
-  function initShaderProgram(gl: WebGLRenderingContext, vsSource: string, fsSource: string) {
-    const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
-    const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
-
-    if (!vertexShader || !fragmentShader) {
-      console.error("Unable to load vertex shader or fragment shader");
-      return null;
-    }
-
-    // Create the shader program
-    const shaderProgram = gl.createProgram();
-    gl.attachShader(shaderProgram, vertexShader);
-    gl.attachShader(shaderProgram, fragmentShader);
-    gl.linkProgram(shaderProgram);
-
-    // If creating the shader program failed, alert
-
-    if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
-      console.error(
-        `Unable to initialize the shader program: ${gl.getProgramInfoLog(shaderProgram)}`
-      );
-      return null;
-    }
-
-    return shaderProgram;
-  }
-
-  //
   // creates a shader of the given type, uploads the source and
   // compiles it.
   //
@@ -61,6 +31,36 @@ export default function WebGL() {
   }
 
   useEffect(() => {
+    //
+    // Initialize a shader program, so WebGL knows how to draw our data
+    //
+    function initShaderProgram(gl: WebGLRenderingContext, vsSource: string, fsSource: string) {
+      const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
+      const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
+
+      if (!vertexShader || !fragmentShader) {
+        console.error("Unable to load vertex shader or fragment shader");
+        return null;
+      }
+
+      // Create the shader program
+      const shaderProgram = gl.createProgram();
+      gl.attachShader(shaderProgram, vertexShader);
+      gl.attachShader(shaderProgram, fragmentShader);
+      gl.linkProgram(shaderProgram);
+
+      // If creating the shader program failed, alert
+
+      if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+        console.error(
+          `Unable to initialize the shader program: ${gl.getProgramInfoLog(shaderProgram)}`
+        );
+        return null;
+      }
+
+      return shaderProgram;
+    }
+
     let squareRotation = 0.0;
     let deltaTime = 0;
 
@@ -151,7 +151,7 @@ export default function WebGL() {
       requestAnimationFrame(render);
     }
     requestAnimationFrame(render);
-  });
+  }, []);
 
   return <canvas id="gl-canvas" style={{ width: "100%" }}></canvas>;
 }
