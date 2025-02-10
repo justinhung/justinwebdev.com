@@ -1,7 +1,8 @@
 # justinwebdev
 
-- **Framework**: [Vite](https://vite.dev/)
-- **Styling**: [MUI](https://mui.com/)
+- **Framework**: [Vite](https://vite.dev/) + [React](https://react.dev/)
+- **Styling**: [MUI](https://mui.com/) + [TailwindCSS](https://tailwindcss.com/)
+- **Other**: [Motion](https://motion.dev/)
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 
