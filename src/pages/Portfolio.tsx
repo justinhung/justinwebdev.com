@@ -1,6 +1,6 @@
 export default function Portfolio() {
   return (
-    <div>
+    <div className="h-screen p-5">
       <h1>Portfolio</h1>
     </div>
   );
