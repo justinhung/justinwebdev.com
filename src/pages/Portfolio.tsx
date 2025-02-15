@@ -19,9 +19,9 @@ export default function Portfolio() {
       title: "Natch",
       subtitle: "Google Natural Language Processing SEO Software",
       description:
-        "Built and deployed a SaaS tool to help businesses and individuals improve their SEO through the use of NLP and AI. Integrated Google's Natural Language API to analyse text. Used AI to rewrite copy, and used cron jobs and a crawler to monitor any changes to a page. Used Stripe to handle subscriptions and Sendgrid for emails.",
+        "Built and deployed a SaaS tool to help businesses and individuals improve their SEO through the use of NLP and AI. Integrated Google's Natural Language API to analyse text. Used AI to rewrite copy, and used cron jobs and a crawler to monitor any changes to a page. Used Stripe to handle subscription payments, and Sendgrid for emails.",
       stack:
-        "Vue, Adonis, Node, Typescript, GraphQL, PostgreSQL, Docker, GitHub Actions, DigitalOcean, Stripe, Slack, SendGrid",
+        "Vue, Adonis, Node, Typescript, GraphQL, PostgreSQL, Docker, GitHub Actions, DigitalOcean, Stripe, Slack, SendGrid, OpenAI",
       url: "https://natch.ai/",
     },
     {
