@@ -35,16 +35,21 @@ export default function Portfolio() {
     },
   ];
   return (
-    <div className="h-screen p-5">
+    <div className="h-screen p-5 text-left">
       <h1>Portfolio</h1>
 
-      <h2>Projects:</h2>
+      <h2 className="text-4xl mt-3 mb-7">Projects:</h2>
 
-      {projects.map((project) => (
-        <div>
-          <h3>{project.title}</h3>
-          <div className="italic">{project.subtitle}</div>
-          <div>{project.description}</div>
+      {projects.map((project, i) => (
+        <div key={i} className="lg:grid grid-cols-2 mb-15">
+          <div>
+            <img src="https://picsum.photos/600/400" className="mb-5" />
+          </div>
+          <div className="lg:pl-5">
+            <div className="bold text-2xl mb-2">{project.title}</div>
+            <div className="italic mb-2">{project.subtitle}</div>
+            <div className="">{project.description}</div>
+          </div>
         </div>
       ))}
     </div>
